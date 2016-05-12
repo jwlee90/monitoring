@@ -41,12 +41,12 @@
 			<!--lnb메뉴-->
 			<div class="content full">
 				<!--[D] h3 타이틀 아래 텍스트가 없을 경우 <h3 class="no_line"> 적용-->
-				<h3 class="no_line">서비스 관리</h3>
+				<h3 class="no_line">API 관리</h3>
 				<a class="btn_print" href="#"><span>인쇄</span></a>
 
 				<div class="table_info">
 					<p class="table_txt">
-						전체 <strong>${fn:length(serviceList)}</strong> 건
+						전체 <strong>${fn:length(apiList)}</strong> 건
 					</p>
 					<div class="btn">
 						<a href="#" class="btn_st03"><span>등록</span></a> <a href="#"
@@ -63,26 +63,24 @@
 							<col width="*">
 							<col width="*">
 							<col width="*">
-							<col width="*">
-							<col width="*">
 						</colgroup>
 						<thead>
 							<tr>
 								<th></th>
 								<th>No.</th>
-								<th>서비스명</th>
-								<th>서비스 코드</th>
+								<th>API명</th>
+								<th>check API</th>
 							</tr>
 						</thead>
 						<tbody>
 							<c:choose>
-								<c:when test="${fn:length(serviceList) > 0}">
-									<c:forEach items="${serviceList }" var="row">
+								<c:when test="${fn:length(apiList) > 0}">
+									<c:forEach items="${apiList }" var="row">
 										<tr>
 											<td><input type="checkbox"></td>
-											<td>${row.service_name }</td>
-											<td>${row.service_name }</td>
-											<td>${row.service_code }</td>
+											<td>${row.api_name }</td>
+											<td>${row.api_name }</td>
+											<td>${row.check_api }</td>
 										</tr>
 									</c:forEach>
 								</c:when>

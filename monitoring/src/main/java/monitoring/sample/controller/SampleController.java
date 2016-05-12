@@ -32,7 +32,16 @@ public class SampleController {
 
 		return mv;
 	}
-	
+	// API 리스트 출력
+	@RequestMapping(value = "/sample/showApiList.do")
+	public ModelAndView showApiList(Map<String, Object> commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("/sample/apiList");
+
+		List<Map<String, Object>> list = sampleService.apiList(commandMap);
+		mv.addObject("apiList", list);
+
+		return mv;
+	}
 	//관리자 리스트 출력
 	@RequestMapping(value = "/sample/showAdminList.do")
 	public ModelAndView showAdminList(Map<String, Object> commandMap) throws Exception {
