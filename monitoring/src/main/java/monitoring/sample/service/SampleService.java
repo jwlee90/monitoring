@@ -7,7 +7,11 @@ public interface SampleService {
 
 	List<Map<String, Object>> serviceList(Map<String, Object> map) throws Exception;
 	
+	List<Map<String, Object>> apiList(Map<String, Object> map) throws Exception;
+	
 	List<Map<String, Object>> adminList(Map<String, Object> map) throws Exception;
+	
+	List<Map<String, Object>> managerSetting(Map<String, Object> map) throws Exception;
 	
 	Map<String, Object> selectBoardDetail(Map<String, Object> map) throws Exception;
 

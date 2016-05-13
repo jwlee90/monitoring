@@ -4,15 +4,17 @@
 	<select id="selectServiceList" parameterType="hashmap"
 		resultType="hashmap">
 		<![CDATA[
-			SELECT *
+			SELECT service_name, api_name, check_api
 			FROM tb_service 
+			LEFT JOIN tb_api 
+			ON tb_service.service_code = tb_api.service_code
 		]]>
 	</select>
 	
 	<select id="selectApiList" parameterType="hashmap"
 		resultType="hashmap">
 		<![CDATA[
-			SELECT api_name, check_api
+			SELECT api_name, check_api, api_code
 			FROM tb_api
 		]]>
 	</select>
@@ -20,7 +22,20 @@
 	<select id="selectAdminList" parameterType="hashmap"
 		resultType="hashmap">
 		<![CDATA[
-			SELECT id, name, dept_name, phone_number, email FROM tb_admin, tb_dept where tb_admin.dept_code = tb_dept.dept_code
+			SELECT id, name, dept_name, phone_number, email 
+			FROM tb_admin, tb_dept 
+			where tb_admin.dept_code = tb_dept.dept_code
+		]]>
+	</select>
+	
+	<select id="selectManager" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+			SELECT DISTINCT name, api_name
+			FROM tb_admin JOIN tb_service_manager
+			ON tb_admin.id = tb_service_manager.id
+			JOIN tb_api 
+			ON tb_api.api_code = tb_service_manager.api_code
 		]]>
 	</select>
 	

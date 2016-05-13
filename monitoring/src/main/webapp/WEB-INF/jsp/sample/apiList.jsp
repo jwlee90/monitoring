@@ -63,6 +63,7 @@
 							<col width="*">
 							<col width="*">
 							<col width="*">
+							<col width="*">
 						</colgroup>
 						<thead>
 							<tr>
@@ -70,6 +71,7 @@
 								<th>No.</th>
 								<th>API명</th>
 								<th>check API</th>
+								<th>API 코드</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -81,6 +83,7 @@
 											<td>${row.api_name }</td>
 											<td>${row.api_name }</td>
 											<td>${row.check_api }</td>
+											<td>${row.api_code }</td>
 										</tr>
 									</c:forEach>
 								</c:when>

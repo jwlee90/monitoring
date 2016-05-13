@@ -81,7 +81,7 @@
 										<tr>
 											<td><input type="checkbox"></td>
 											<td>${row.service_name }</td>
-											<td>${row.service_name }</td>
+											<td><a href="http://localhost:8080/monitoring/sample/showApiList.do">${row.service_name }</a></td>
 											<td>${row.service_code }</td>
 										</tr>
 									</c:forEach>

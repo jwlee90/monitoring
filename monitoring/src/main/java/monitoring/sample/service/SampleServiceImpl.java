@@ -23,8 +23,18 @@ public class SampleServiceImpl implements SampleService {
 	}
 	
 	@Override
+	public List<Map<String, Object>> apiList(Map<String, Object> map) throws Exception {
+		return sampleDAO.selectApiList(map);
+	}
+	
+	@Override
 	public List<Map<String, Object>> adminList(Map<String, Object> map) throws Exception {
 		return sampleDAO.selectAdminList(map);
+	}
+	
+	@Override
+	public List<Map<String, Object>> managerSetting(Map<String, Object> map) throws Exception {
+		return sampleDAO.selectManager(map);
 	}
 	
 	@Override

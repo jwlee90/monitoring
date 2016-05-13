@@ -16,8 +16,18 @@ public class SampleDAO extends AbstractDAO {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectApiList(Map<String, Object> map) throws Exception {
+		return (List<Map<String, Object>>) selectList("sample.selectApiList", map);
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Map<String, Object>> selectAdminList(Map<String, Object> map) throws Exception {
 		return (List<Map<String, Object>>) selectList("sample.selectAdminList", map);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Map<String, Object>> selectManager(Map<String, Object> map) throws Exception {
+		return (List<Map<String, Object>>) selectList("sample.selectManager", map);
 	}
 
 	public void updateHitCnt(Map<String, Object> map) throws Exception {

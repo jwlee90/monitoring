@@ -52,6 +52,22 @@ public class SampleController {
 
 		return mv;
 	}
+	
+	//관리자 리스트 출력 (API설정 페이지)
+	@RequestMapping(value = "/sample/showManager.do")
+	public ModelAndView showManager(Map<String, Object> commandMap) throws Exception {
+		ModelAndView mv = new ModelAndView("/sample/managerSetting");
+
+		List<Map<String, Object>> list = sampleService.managerSetting(commandMap);
+		List<Map<String, Object>> list2 = sampleService.adminList(commandMap);
+		List<Map<String, Object>> list3 = sampleService.apiList(commandMap);
+		
+		mv.addObject("managerSetting", list);
+		mv.addObject("adminList", list2);
+		mv.addObject("apiList", list3);
+
+		return mv;
+	}
 
 	@RequestMapping(value = "/sample/openBoardDetail.do")
 	public ModelAndView openBoardDetail(CommandMap commandMap) throws Exception {
