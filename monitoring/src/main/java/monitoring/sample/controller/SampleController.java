@@ -60,11 +60,11 @@ public class SampleController {
 
 		List<Map<String, Object>> list = sampleService.managerSetting(commandMap);
 		List<Map<String, Object>> list2 = sampleService.adminList(commandMap);
-		List<Map<String, Object>> list3 = sampleService.apiList(commandMap);
+		List<Map<String, Object>> list3 = sampleService.serviceList(commandMap);
 		
 		mv.addObject("managerSetting", list);
 		mv.addObject("adminList", list2);
-		mv.addObject("apiList", list3);
+		mv.addObject("serviceList", list3);
 
 		return mv;
 	}

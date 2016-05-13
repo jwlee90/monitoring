@@ -29,7 +29,7 @@ public class SampleDAO extends AbstractDAO {
 	public List<Map<String, Object>> selectManager(Map<String, Object> map) throws Exception {
 		return (List<Map<String, Object>>) selectList("sample.selectManager", map);
 	}
-
+	
 	public void updateHitCnt(Map<String, Object> map) throws Exception {
 		update("sample.updateHitCnt", map);
 	}

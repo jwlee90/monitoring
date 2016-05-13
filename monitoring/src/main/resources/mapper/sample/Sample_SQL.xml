@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sample">
-	<select id="selectServiceList" parameterType="hashmap"
+	<!--<select id="selectServiceList" parameterType="hashmap"
 		resultType="hashmap">
 		<![CDATA[
 			SELECT service_name, api_name, check_api
 			FROM tb_service 
 			LEFT JOIN tb_api 
 			ON tb_service.service_code = tb_api.service_code
+		]]>
+	</select>-->
+	
+	<select id="selectServiceList" parameterType="hashmap"
+		resultType="hashmap">
+		<![CDATA[
+			SELECT service_name, service_code
+			FROM tb_service 
 		]]>
 	</select>
 	
@@ -31,11 +39,11 @@
 	<select id="selectManager" parameterType="hashmap"
 		resultType="hashmap">
 		<![CDATA[
-			SELECT DISTINCT name, api_name
+			SELECT DISTINCT name, service_name
 			FROM tb_admin JOIN tb_service_manager
 			ON tb_admin.id = tb_service_manager.id
-			JOIN tb_api 
-			ON tb_api.api_code = tb_service_manager.api_code
+			JOIN tb_service 
+			ON tb_service.service_code = tb_service_manager.service_code
 		]]>
 	</select>
 	

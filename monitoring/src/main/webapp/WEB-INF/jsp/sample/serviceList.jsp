@@ -1,10 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <%@ include file="/WEB-INF/include/include-header.jspf"%>
+<TITLE>CHECKBOX</TITLE>
+<script>
+function check(){
+    cbox = input_form.chk;
+    if(cbox.length) {  // 여러 개일 경우
+        for(var i = 0; i<cbox.length;i++) {
+            cbox[i].checked=input_form.all.checked;
+        }
+    } else { // 한 개일 경우
+        cbox.checked=input_form.all.checked;
+    }
+}
+</script>
 </head>
+
+
 <body>
 	<div id="wrap">
 
@@ -38,11 +55,19 @@
 
 		<!--container-->
 		<div id="container">
-			<!--lnb메뉴-->
-			<div class="content full">
+		<!--lnb메뉴-->
+		<div class="lnb_area" id="lnb-group">
+			<h2>서비스</h2>
+			<!--[D]해당 메뉴 활성화시 <li class="on">적용-->
+			<ul class="lnb">
+				<li class="on"><a href="http://localhost:8080/monitoring/sample/showServiceList.do">서비스 관리</a></li>
+				<li><a href="http://localhost:8080/monitoring/sample/showApiList.do">API 관리</a></li>
+			</ul>
+		</div>
+		<!--//lnb메뉴-->
+			<div class="content">
 				<!--[D] h3 타이틀 아래 텍스트가 없을 경우 <h3 class="no_line"> 적용-->
-				<h3 class="no_line">서비스 관리</h3>
-				<a class="btn_print" href="#"><span>인쇄</span></a>
+				<h3 class="no_line"></h3>
 
 				<div class="table_info">
 					<p class="table_txt">
@@ -56,20 +81,17 @@
 
 				<div class="table_lst">
 					<!--[D] 테이블이 길 경우 table style="width:px"값 설정 style="width:1250px" -->
+					<form name="input_form">
 					<table class="table_st01" summary="서비스 등록 관리 리스트">
 						<caption>관리자계정관리 리스트</caption>
 						<colgroup>
 							<col width="*">
 							<col width="*">
 							<col width="*">
-							<col width="*">
-							<col width="*">
-							<col width="*">
 						</colgroup>
 						<thead>
 							<tr>
-								<th></th>
-								<th>No.</th>
+								<th><input type="checkbox" name="all" onclick="check();"></th>
 								<th>서비스명</th>
 								<th>서비스 코드</th>
 							</tr>
@@ -79,12 +101,11 @@
 								<c:when test="${fn:length(serviceList) > 0}">
 									<c:forEach items="${serviceList }" var="row">
 										<tr>
-											<td><input type="checkbox"></td>
+											<td><input type="checkbox" name="chk"></td>
 											<td>${row.service_name }</td>
-											<td><a href="http://localhost:8080/monitoring/sample/showApiList.do">${row.service_name }</a></td>
 											<td>${row.service_code }</td>
 										</tr>
-									</c:forEach>
+										</c:forEach>
 								</c:when>
 								<c:otherwise>
 									<tr>
@@ -94,6 +115,7 @@
 							</c:choose>
 						</tbody>
 					</table>
+					</form>
 				</div>
 
 				<!--페이징-->
